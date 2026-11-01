@@ -1,0 +1,4 @@
+USE sql_lab;
+
+SELECT COUNT(*) AS total_employees
+FROM employees;
