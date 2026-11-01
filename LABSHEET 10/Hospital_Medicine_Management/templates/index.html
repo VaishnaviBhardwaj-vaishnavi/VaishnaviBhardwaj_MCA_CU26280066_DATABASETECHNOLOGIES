@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Medicine Management</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Hospital Medicine Management System</h1>
+    <p>Medicine Inventory Management Application</p>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/add">Add Medicine</a>
+    <a href="/view">View Medicines</a>
+    <a href="/search">Search Medicine</a>
+    <a href="/update">Update Stock</a>
+    <a href="/delete">Delete Medicine</a>
+    <a href="/low-stock">Low Stock</a>
+    <a href="/report">Inventory Report</a>
+</nav>
+
+<div class="container">
+
+{% if page == "home" %}
+
+    <h2>Welcome to Hospital Medicine Management System</h2>
+
+    <p>
+        This application helps manage hospital medicine
+        records using Python Flask and MongoDB.
+    </p>
+
+    <p>You can add, view, search, update and delete medicines.</p>
+
+{% elif page == "add" %}
+
+    <h2>Add New Medicine</h2>
+
+    <form method="POST">
+
+        <label>Medicine ID</label>
+        <input type="number" name="medicine_id" required>
+
+        <label>Medicine Name</label>
+        <input type="text" name="name" required>
+
+        <label>Category</label>
+        <input type="text" name="category" required>
+
+        <label>Price</label>
+        <input type="number" step="0.01" name="price"
+               min="0" required>
+
+        <label>Stock</label>
+        <input type="number" name="stock" min="0" required>
+
+        <label>Manufacturer</label>
+        <input type="text" name="manufacturer" required>
+
+        <h3>Supplier Information</h3>
+
+        <label>Supplier Name</label>
+        <input type="text" name="supplier_name">
+
+        <label>Supplier Phone</label>
+        <input type="text" name="supplier_phone">
+
+        <label>Supplier City</label>
+        <input type="text" name="supplier_city">
+
+        <button type="submit">Add Medicine</button>
+
+    </form>
+
+    <p class="message">{{ message }}</p>
+
+
+{% elif page == "view" %}
+
+    <h2>All Medicines</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Manufacturer</th>
+            <th>Supplier</th>
+        </tr>
+
+        {% for m in data %}
+        <tr>
+            <td>{{ m.medicine_id }}</td>
+            <td>{{ m.name }}</td>
+            <td>{{ m.category }}</td>
+            <td>₹{{ m.price }}</td>
+            <td>{{ m.stock }}</td>
+            <td>{{ m.manufacturer }}</td>
+            <td>{{ m.supplier.name if m.supplier else "-" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+{% elif page == "search" %}
+
+    <h2>Search Medicine</h2>
+
+    <form method="POST">
+
+        <label>Medicine ID or Name</label>
+
+        <input type="text" name="search" required>
+
+        <button type="submit">Search</button>
+
+    </form>
+
+    <p class="message">{{ message }}</p>
+
+    {% if result %}
+
+        <h3>Medicine Details</h3>
+
+        <p>Medicine ID: {{ result.medicine_id }}</p>
+        <p>Name: {{ result.name }}</p>
+        <p>Category: {{ result.category }}</p>
+        <p>Price: ₹{{ result.price }}</p>
+        <p>Stock: {{ result.stock }}</p>
+        <p>Manufacturer: {{ result.manufacturer }}</p>
+
+        {% if result.supplier %}
+            <h3>Supplier Details</h3>
+            <p>Name: {{ result.supplier.name }}</p>
+            <p>Phone: {{ result.supplier.phone }}</p>
+            <p>City: {{ result.supplier.city }}</p>
+        {% endif %}
+
+    {% endif %}
+
+
+{% elif page == "update" %}
+
+    <h2>Update Medicine Stock</h2>
+
+    <form method="POST">
+
+        <label>Medicine ID</label>
+        <input type="number" name="medicine_id" required>
+
+        <label>New Stock</label>
+        <input type="number" name="stock" min="0" required>
+
+        <button type="submit">Update Stock</button>
+
+    </form>
+
+    <p class="message">{{ message }}</p>
+
+
+{% elif page == "delete" %}
+
+    <h2>Delete Medicine</h2>
+
+    <form method="POST">
+
+        <label>Medicine ID</label>
+        <input type="number" name="medicine_id" required>
+
+        <button type="submit">Delete Medicine</button>
+
+    </form>
+
+    <p class="message">{{ message }}</p>
+
+
+{% elif page == "low" %}
+
+    <h2>Low Stock Medicines</h2>
+
+    <table>
+        <tr>
+            <th>Medicine ID</th>
+            <th>Name</th>
+            <th>Stock</th>
+        </tr>
+
+        {% for m in data %}
+        <tr>
+            <td>{{ m.medicine_id }}</td>
+            <td>{{ m.name }}</td>
+            <td>{{ m.stock }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if not data %}
+        <p>No low stock medicines found.</p>
+    {% endif %}
+
+
+{% elif page == "report" %}
+
+    <h2>Medicine Inventory Report</h2>
+
+    <div class="report">
+
+        <h3>Total Medicines: {{ total_medicines }}</h3>
+
+        <h3>Total Stock: {{ total_stock }}</h3>
+
+        <h3>Low Stock Medicines: {{ low_count }}</h3>
+
+        {% if expensive %}
+            <h3>Most Expensive Medicine:
+                {{ expensive.name }} - ₹{{ expensive.price }}
+            </h3>
+        {% endif %}
+
+        {% if cheapest %}
+            <h3>Cheapest Medicine:
+                {{ cheapest.name }} - ₹{{ cheapest.price }}
+            </h3>
+        {% endif %}
+
+    </div>
+
+{% endif %}
+
+</div>
+
+<footer>
+    <p>Hospital Medicine Management System | MongoDB + Flask</p>
+</footer>
+
+</body>
+</html>

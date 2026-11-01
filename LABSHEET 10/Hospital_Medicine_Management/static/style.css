@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f1f5f9;
+    color: #333;
+}
+
+header {
+    background-color: #145374;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+nav {
+    background-color: #0b354b;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    display: inline-block;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+.container {
+    width: 85%;
+    margin: 30px auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    min-height: 300px;
+}
+
+h2 {
+    color: #145374;
+}
+
+form {
+    max-width: 450px;
+    margin: auto;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #145374;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0b354b;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #145374;
+    color: white;
+}
+
+td, th {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.message {
+    text-align: center;
+    color: green;
+    font-weight: bold;
+}
+
+.report {
+    background-color: #e8f4fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: #0b354b;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
