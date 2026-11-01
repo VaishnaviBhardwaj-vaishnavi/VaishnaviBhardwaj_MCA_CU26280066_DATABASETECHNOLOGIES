@@ -1,0 +1,14 @@
+USE CollegeDB;
+
+DELIMITER //
+
+CREATE FUNCTION AddTwoNumbers(a INT, b INT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    RETURN a + b;
+END //
+
+DELIMITER ;
+
+SELECT AddTwoNumbers(10, 20) AS Sum;

@@ -1,0 +1,14 @@
+USE CollegeDB;
+
+DELIMITER //
+
+CREATE FUNCTION DoubleMarks(input_marks DECIMAL(5,2))
+RETURNS DECIMAL(6,2)
+DETERMINISTIC
+BEGIN
+    RETURN input_marks * 2;
+END //
+
+DELIMITER ;
+
+SELECT DoubleMarks(40) AS Double_Marks;
