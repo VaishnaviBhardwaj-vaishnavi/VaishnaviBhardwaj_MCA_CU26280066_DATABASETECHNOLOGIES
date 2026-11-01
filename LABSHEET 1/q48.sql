@@ -1,0 +1,4 @@
+ALTER TABLE file_metadata
+MODIFY COLUMN file_id BIGINT,
+MODIFY COLUMN file_path TEXT,
+DROP COLUMN checksum;

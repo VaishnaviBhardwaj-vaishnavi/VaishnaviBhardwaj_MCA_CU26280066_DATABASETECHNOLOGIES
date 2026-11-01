@@ -1,0 +1,1 @@
+RENAME TABLE departments TO dept_units;

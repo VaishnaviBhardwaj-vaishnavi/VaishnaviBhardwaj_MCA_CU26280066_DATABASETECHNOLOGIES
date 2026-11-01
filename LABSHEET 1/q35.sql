@@ -1,0 +1,1 @@
+CREATE TABLE employees_archive LIKE employees;

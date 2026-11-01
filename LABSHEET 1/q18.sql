@@ -1,0 +1,2 @@
+ALTER TABLE system_settings
+DROP PRIMARY KEY;
