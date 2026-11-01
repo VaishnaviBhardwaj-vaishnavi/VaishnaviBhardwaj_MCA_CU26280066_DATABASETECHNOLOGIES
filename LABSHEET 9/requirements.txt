@@ -1,0 +1,2 @@
+flask
+pymongo"flask`npymongo" | Out-File -Encoding utf8 requirements.txt

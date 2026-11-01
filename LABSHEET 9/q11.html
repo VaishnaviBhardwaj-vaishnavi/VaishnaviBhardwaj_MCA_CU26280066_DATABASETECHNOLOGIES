@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Filtering</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container" style="width: 90%;">
+
+    <h1>MongoDB Student Filtering</h1>
+
+    <h2>1. Computer Science Department</h2>
+    {% for s in department %}
+        <p>{{ s.name }} - {{ s.department }} - {{ s.marks }}</p>
+    {% else %}
+        <p>No records found.</p>
+    {% endfor %}
+
+    <h2>2. Students Having Marks Greater Than 75</h2>
+    {% for s in high_marks %}
+        <p>{{ s.name }} - {{ s.marks }}</p>
+    {% else %}
+        <p>No records found.</p>
+    {% endfor %}
+
+    <h2>3. Students Having Marks Between 50 and 80</h2>
+    {% for s in marks_range %}
+        <p>{{ s.name }} - {{ s.marks }}</p>
+    {% else %}
+        <p>No records found.</p>
+    {% endfor %}
+
+    <h2>4. Students Older Than 20</h2>
+    {% for s in older_students %}
+        <p>{{ s.name }} - {{ s.age }} years</p>
+    {% else %}
+        <p>No records found.</p>
+    {% endfor %}
+
+    <a href="/">Back to Home</a>
+
+</div>
+
+</body>
+</html>

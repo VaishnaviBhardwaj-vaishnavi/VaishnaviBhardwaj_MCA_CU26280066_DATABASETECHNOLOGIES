@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Update Student Details</h1>
+
+    <form method="POST">
+
+        <label>Student ID:</label>
+        <input type="number" name="student_id" required>
+
+        <label>New Name:</label>
+        <input type="text" name="name" required>
+
+        <label>New Age:</label>
+        <input type="number" name="age" required>
+
+        <label>New Department:</label>
+        <input type="text" name="department" required>
+
+        <label>New Marks:</label>
+        <input type="number" name="marks" min="0" max="100" required>
+
+        <button type="submit">Update Student</button>
+
+    </form>
+
+    <p class="message">{{ message }}</p>
+
+    <a href="/">Back to Home</a>
+</div>
+
+</body>
+</html>
