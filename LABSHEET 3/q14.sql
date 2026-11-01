@@ -1,0 +1,11 @@
+USE company_db;
+
+SET TRANSACTION READ ONLY;
+
+START TRANSACTION;
+
+SELECT * FROM employees;
+
+SELECT * FROM departments;
+
+COMMIT;

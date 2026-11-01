@@ -1,0 +1,4 @@
+GRANT ALL PRIVILEGES
+ON *.*
+TO 'admin_user'@'%'
+WITH GRANT OPTION;

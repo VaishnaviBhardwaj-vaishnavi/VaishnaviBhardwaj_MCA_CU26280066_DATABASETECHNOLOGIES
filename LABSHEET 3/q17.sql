@@ -1,0 +1,1 @@
+SHOW GRANTS FOR 'team_lead'@'localhost';
