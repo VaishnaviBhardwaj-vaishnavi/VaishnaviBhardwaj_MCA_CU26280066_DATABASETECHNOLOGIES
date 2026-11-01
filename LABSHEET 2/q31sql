@@ -1,0 +1,5 @@
+SELECT status,
+MAX(total_amount) AS maximum_amount,
+MIN(total_amount) AS minimum_amount
+FROM orders
+GROUP BY status;
